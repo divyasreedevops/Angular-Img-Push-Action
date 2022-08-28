@@ -1,0 +1,25 @@
+name: Docker Image CI-CD
+on:
+  push:
+    branches: [ "master" ]
+    
+jobs:
+
+  docker:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      run: docker login -u shikashi -p Dockerhub18@
+    
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag shikashi/angular-action-img:${{ steps.date.outputs.date }}
+      
+    - name: Docker Push
+      run: docker push shikashi/angular-img:${{ steps.date.outputs.date }}
