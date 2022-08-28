@@ -2,6 +2,10 @@ name: Docker Image CI-CD
 on:
   push:
     branches: [ "master" ]
+# Env variable
+env:
+  DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWD}}
     
 jobs:
 
@@ -12,7 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: docker login
-      run: docker login -u shikashi -p Dockerhub18@
+      run: | # log into docker hub account
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     
     - name: Get current date
       id: date
