@@ -26,3 +26,5 @@ jobs:
   
     - name: Docker Push
       run: docker push shikashi/angular-action-img:${{ steps.date.outputs.date }}
+      
+      
