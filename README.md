@@ -1,5 +1,5 @@
 # AngularAction
  
- npm i
- ng test
- ng build
+ - npm i
+ - ng test
+ - ng build
