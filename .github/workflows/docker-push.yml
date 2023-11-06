@@ -3,9 +3,9 @@ on:
   push:
     branches: [ "master" ]
 # Env variable
-env:
-  DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
-  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWD}}
+# env:
+#   DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+#   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWD}}
     
 jobs:
   checkov-job:
