@@ -1,4 +1,4 @@
-name: Docker Image CI-CD
+name: Docker Image CI-CD Checkov Security Scan
 on:
   push:
     branches: [ "master" ]
@@ -8,6 +8,24 @@ env:
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWD}}
     
 jobs:
+  checkov-job:
+    runs-on: ubuntu-latest
+    name: checkov
+    steps:
+      - name: Checkout repo
+        id: checkout
+        uses: actions/checkout@main
+        
+      - name: Install Checkov
+        id: install-checkov-and-other-dependencies
+        run: |
+          pip install -r scripts/security/checkov/requirements.txt
+
+      - name: Get list of changed files
+        id: files
+        uses: jitterbit/get-changed-files@v1
+
+
   docker:
     runs-on: ubuntu-latest
 
