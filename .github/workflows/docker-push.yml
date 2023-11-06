@@ -19,7 +19,7 @@ jobs:
       - name: Install Checkov
         id: install-checkov-and-other-dependencies
         run: |
-          pip install -r scripts/security/checkov/requirements.txt
+          pip install -r requirements.txt
 
       - name: Get list of changed files
         id: files
